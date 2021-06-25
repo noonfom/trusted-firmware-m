@@ -231,6 +231,10 @@ static void tfm_crypto_ipc_handler(void)
                 psa_reply(msg.handle, PSA_SUCCESS);
                 break;
             case PSA_IPC_CALL:
+                printf("\x1b[35m"
+                       "[Crypto Partition] Received PSA IPC call"
+                       "\x1b[0m" "\r\n");
+                
                 /* Parse the message */
                 status = tfm_crypto_parse_msg(&msg, &iov, &sfn_id);
                 /* Call the dispatcher based on the SID passed as type */
